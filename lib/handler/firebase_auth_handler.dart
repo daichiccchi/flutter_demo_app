@@ -1,5 +1,6 @@
 // firebaseから発生する例外を定義
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 enum FirebaseAuthResultStatus {
   Successful,
@@ -89,5 +90,22 @@ class FirebaseAuthExceptionHandler {
         break;
     }
     return message;
+  }
+
+  static Widget showErrorMessage(bool hasError, errorMessage) {
+    if (hasError) {
+      return Row(
+        children: [
+          Text(
+            style: const TextStyle(
+              color: Colors.red,
+            ),
+            '*$errorMessage',
+          ),
+        ],
+      );
+    } else {
+      return const Text('');
+    }
   }
 }

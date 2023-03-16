@@ -56,14 +56,8 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(children: [
-                    Text(
-                      style: const TextStyle(
-                        color: Colors.red,
-                      ),
-                      _hasError ? '*$_errorMessage' : '',
-                    )
-                  ],),
+                  // エラーハンドリングによるメッセージを表示
+                  FirebaseAuthExceptionHandler.showErrorMessage(_hasError, _errorMessage),
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'お名前'),
                     controller: nameInputController,
